@@ -24,8 +24,13 @@ public class UnitTestBankAccount {
     }
 
     @Test
+    void testWithdraw() throws NotEnoughBalanceException {
+        account.withdraw(30);
+        assertEquals(70, account.getBalance());
+    }
+    @Test
     @DisplayName("throws NotEnoughBalanceException when withdraw more than balance")
-    void throwsExceptionWhenPopped() {
+    void testWithdrawMoreThanBalance() {
         assertThrows(NotEnoughBalanceException.class,
                 () -> account.withdraw(10000));
         assertEquals(initialBalance, account.getBalance());
