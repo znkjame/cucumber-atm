@@ -1,1 +1,1 @@
-# Bank Example uing Cucumber
+# Bank Example using Cucumber
