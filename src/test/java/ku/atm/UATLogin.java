@@ -1,4 +1,4 @@
-package csku.atm;
+package ku.atm;
 
 import cucumber.api.CucumberOptions;
 import cucumber.api.junit.Cucumber;

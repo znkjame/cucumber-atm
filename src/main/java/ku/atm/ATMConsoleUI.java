@@ -1,4 +1,4 @@
-package csku.atm;
+package ku.atm;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;

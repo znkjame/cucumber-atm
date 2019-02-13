@@ -1,4 +1,4 @@
-package csku.atm;
+package ku.atm;
 
 import java.util.HashMap;
 import java.util.Map;

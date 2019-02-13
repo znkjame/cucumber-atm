@@ -1,4 +1,4 @@
-package csku.atm;
+package ku.atm;
 
 public class NotEnoughBalanceException extends Exception {
     public NotEnoughBalanceException() {}
