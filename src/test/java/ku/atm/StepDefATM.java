@@ -19,17 +19,17 @@ public class StepDefATM {
         atm = new ATM(bank);
     }
 
-    @Given("a customer with id (\\d+) and pin (\\d+) exists")
+    @Given("a customer with id {int} and pin {int} exists")
     public void a_customer_with_id_and_pin_exists(int id, int pin) {
         bank.addCustomer(new Customer(id, pin));
     }
 
-    @Given("a customer with id (\\d+) and pin (\\d+) with balance (.*) exists")
+    @Given("a customer with id {int} and pin {int} with balance {float} exists")
     public void a_customer_with_id_and_pin_with_balance_exists(int id, int pin, double balance) {
         bank.addCustomer(new Customer(id, pin, balance));
     }
 
-    @When("I login to ATM with id (\\d+) and pin (\\d+)")
+    @When("I login to ATM with id {int} and pin {int}")
     public void i_login_to_ATM_with_id_and_pin(int id, int pin) {
         validLogin = atm.validateCustomer(id, pin);
     }
@@ -44,27 +44,27 @@ public class StepDefATM {
         assertFalse(validLogin);
     }
 
-    @When("I withdraw (.*) from ATM")
+    @When("I withdraw {float} from ATM")
     public void i_withdraw_from_atm(double amount) throws NotEnoughBalanceException {
         atm.withdraw(amount);
     }
 
-    @When("I overdraw (.*) from ATM")
+    @When("I overdraw {float} from ATM")
     public void i_withdraw_from_atm_more_than_balance(double amount) throws NotEnoughBalanceException {
         assertThrows(NotEnoughBalanceException.class,
                 () -> atm.withdraw(amount));
     }
-    @Then("my account balance is (.*)")
+    @Then("my account balance is {float}")
     public void my_account_balance_is(double balance) {
         assertEquals(balance, atm.getBalance());
     }
 
-    @When("I transfer (.*) to customer id (\\d+)")
+    @When("I transfer {float} to customer id {int}")
     public void i_transfer_to_customer_id(double amount, int toId) throws NotEnoughBalanceException {
         atm.transfer(toId, amount);
     }
 
-    @Then("customer id (\\d+) account balance is (.*)")
+    @Then("customer id {int} account balance is {float}")
     public void customer_id_account_balance_is(int id, double balance) {
         assertEquals(balance,
                      bank.findCustomer(id).getAccount().getBalance());
